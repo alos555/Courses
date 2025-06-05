@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Courses</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="welcome">Welcome to the Course app</string>
+    <string name="bt_con">  Continue  </string>
+    <string name="bt_sign">  Sing up  </string>
+    <string name="bt_log">  Log in  </string>
+    <string name="boardfirst1">Quick and easy learning</string>
+    <string name="boardsecond1">Create your own study plan</string>
+    <string name="boardsecond2">Study according to the study plan, make study more motivated</string>
+    <string name="boardfirst2">Easy and fast learning at any time to help you improve various skills</string>
+    <string name="welcome_text">Free courses for you to find your way to learning</string>
+</resources>

@@ -3,6 +3,8 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_courses">Courses</string>
+    <string name="title_search">search</string>
     <string name="welcome">Welcome to the Course app</string>
     <string name="bt_con">  Continue  </string>
     <string name="bt_sign">  Sing up  </string>
@@ -12,4 +14,16 @@
     <string name="boardsecond2">Study according to the study plan, make study more motivated</string>
     <string name="boardfirst2">Easy and fast learning at any time to help you improve various skills</string>
     <string name="welcome_text">Free courses for you to find your way to learning</string>
+    <string name="check">By creating an account you have to agree with our them and condication.</string>
+    <string name="reg_top">Enter your details below and free sign up</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="reset_password">Forget password?</string>
+    <string name="bp_reg">Create account</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_reg_in">Already have an account？ </string>
+    <string name="action_sign_in">Don’t have an account?</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 </resources>

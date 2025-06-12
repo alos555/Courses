@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
 }
 
+
+
 android {
     namespace = "com.example.courses"
     compileSdk = 35
@@ -45,7 +47,11 @@ dependencies {
     implementation(libs.navigation.ui)
     implementation(libs.activity)
     implementation(libs.annotation)
+    implementation(libs.security.crypto)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation("com.squareup.okhttp3:okhttp:4.9.3")
+    implementation("com.google.code.gson:gson:2.8.9")
+
 }

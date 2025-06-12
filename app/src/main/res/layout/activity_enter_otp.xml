@@ -9,47 +9,72 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Введите пин-код"
+        android:text="Введите код из письма"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginBottom="32dp"/>
+        android:layout_marginBottom="24dp"/>
+
+    <EditText
+        android:id="@+id/etOtp"
+        android:layout_width="1px"
+        android:layout_height="1px"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:backgroundTint="@android:color/transparent"
+        android:textColor="@android:color/transparent"
+        android:cursorVisible="false"
+        android:inputType="none"/>
 
     <LinearLayout
-        android:id="@+id/pinView"
+        android:id="@+id/otpView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:weightSum="4"
-        android:layout_marginBottom="24dp">
+        android:weightSum="6"
+        android:layout_marginBottom="32dp">
 
         <ImageView
-            android:id="@+id/pin1"
+            android:id="@+id/otp1"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginHorizontal="8dp"
-            android:src="@drawable/circle_pin" />
+            android:src="@drawable/circle_pin"/>
 
         <ImageView
-            android:id="@+id/pin2"
+            android:id="@+id/otp2"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginHorizontal="8dp"
-            android:src="@drawable/circle_pin" />
+            android:src="@drawable/circle_pin"/>
 
         <ImageView
-            android:id="@+id/pin3"
+            android:id="@+id/otp3"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginHorizontal="8dp"
-            android:src="@drawable/circle_pin" />
+            android:src="@drawable/circle_pin"/>
 
         <ImageView
-            android:id="@+id/pin4"
+            android:id="@+id/otp4"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginHorizontal="8dp"
-            android:src="@drawable/circle_pin" />
+            android:src="@drawable/circle_pin"/>
+
+        <ImageView
+            android:id="@+id/otp5"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginHorizontal="8dp"
+            android:src="@drawable/circle_pin"/>
+
+        <ImageView
+            android:id="@+id/otp6"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginHorizontal="8dp"
+            android:src="@drawable/circle_pin"/>
     </LinearLayout>
 
     <!-- Клавиатура -->
@@ -63,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="10dp">
             <Button android:id="@+id/btn1" android:text="1" android:layout_width="60dp" android:layout_height="60dp" android:textSize="24sp" android:backgroundTint="#E0E0E0"/>
             <Button android:id="@+id/btn2" android:text="2" android:layout_width="60dp" android:layout_height="60dp" android:layout_marginHorizontal="10dp" android:textSize="24sp" android:backgroundTint="#E0E0E0"/>
             <Button android:id="@+id/btn3" android:text="3" android:layout_width="60dp" android:layout_height="60dp" android:textSize="24sp" android:backgroundTint="#E0E0E0"/>
@@ -73,7 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="10dp">
             <Button android:id="@+id/btn4" android:text="4" android:layout_width="60dp" android:layout_height="60dp" android:textSize="24sp" android:backgroundTint="#E0E0E0"/>
             <Button android:id="@+id/btn5" android:text="5" android:layout_width="60dp" android:layout_height="60dp" android:layout_marginHorizontal="10dp" android:textSize="24sp" android:backgroundTint="#E0E0E0"/>
             <Button android:id="@+id/btn6" android:text="6" android:layout_width="60dp" android:layout_height="60dp" android:textSize="24sp" android:backgroundTint="#E0E0E0"/>
@@ -83,7 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="10dp">
             <Button android:id="@+id/btn7" android:text="7" android:layout_width="60dp" android:layout_height="60dp" android:textSize="24sp" android:backgroundTint="#E0E0E0"/>
             <Button android:id="@+id/btn8" android:text="8" android:layout_width="60dp" android:layout_height="60dp" android:layout_marginHorizontal="10dp" android:textSize="24sp" android:backgroundTint="#E0E0E0"/>
             <Button android:id="@+id/btn9" android:text="9" android:layout_width="60dp" android:layout_height="60dp" android:textSize="24sp" android:backgroundTint="#E0E0E0"/>
@@ -93,22 +118,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <View
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@android:color/transparent"/>
+            <View android:layout_width="60dp" android:layout_height="60dp" android:background="@android:color/transparent"/>
             <Button android:id="@+id/btn0" android:text="0" android:layout_width="60dp" android:layout_height="60dp" android:layout_marginHorizontal="10dp" android:textSize="24sp" android:backgroundTint="#E0E0E0"/>
             <Button android:id="@+id/btnDelete" android:text="⌫" android:layout_width="60dp" android:layout_height="60dp" android:textSize="24sp" android:backgroundTint="#E0E0E0"/>
         </LinearLayout>
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnEnterPin"
+        android:id="@+id/btnVerifyOtp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Войти"
+        android:text="Подтвердить"
         android:layout_marginTop="40dp"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"/>
 </LinearLayout>
-

@@ -30,5 +30,28 @@
         android:name="com.example.courses.ui.fragment.account.AccountFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/navigation_favourites"
+        android:name="com.example.courses.ui.fragment.favourites.FavouritesFragment"
+        android:label="Избранное"
+        tools:layout="@layout/fragment_favourites" />
+
+    <fragment
+        android:id="@+id/navigation_edit_account"
+        android:name="com.example.courses.ui.fragment.editaccount.EditAccountFragment"
+        android:label="Редактировать аккаунт"
+        tools:layout="@layout/fragment_edit_account" />
+
+    <fragment
+        android:id="@+id/navigation_help"
+        android:name="com.example.courses.ui.fragment.help.HelpFragment"
+        android:label="Помощь"
+        tools:layout="@layout/fragment_help" />
+
+    <fragment
+        android:id="@+id/navigation_my_courses"
+        android:name="com.example.courses.ui.fragment.my_courses.MyCoursesFragment"
+        android:label="Мои курсы"
+        tools:layout="@layout/fragment_my_courses" />
 
 </navigation>

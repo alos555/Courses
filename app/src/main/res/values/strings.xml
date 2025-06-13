@@ -20,6 +20,7 @@
     <string name="reset_password">Forget password?</string>
     <string name="bp_reg">Create account</string>
     <string name="user_home">Hi user</string>
+    <string name="today_home">Learned today</string>
     <string name="home_first">Let’s start learning</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>

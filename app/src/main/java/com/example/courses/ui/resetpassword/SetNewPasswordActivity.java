@@ -10,9 +10,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.courses.R;
+import com.example.courses.data.model.DataBinding;
 import com.example.courses.data.source.SupabaseClient;
 import com.example.courses.data.model.Result;
 import com.example.courses.ui.login.LoginActivity;
+
+import java.io.IOException;
 
 public class SetNewPasswordActivity extends AppCompatActivity {
 
@@ -41,16 +44,24 @@ public class SetNewPasswordActivity extends AppCompatActivity {
             }
 
             SupabaseClient client = new SupabaseClient();
-            client.updatePassword(email, newPassword, result -> {
-                runOnUiThread(() -> {
-                    if (result.isSuccess()) {
-                        Toast.makeText(this, "Пароль изменён", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(this, LoginActivity.class));
+            client.updateUserPassword(getApplicationContext(), newPassword, new SupabaseClient.supa_callback() {
+                @Override
+                public void onFailure(IOException e) {
+                    runOnUiThread(() -> {
+                        Toast.makeText(getApplicationContext(), "Ошибка", Toast.LENGTH_LONG).show();
+                    });
+                }
+
+                @Override
+                public void onResponse(String responseBody) {
+                    DataBinding d = new DataBinding(getApplicationContext());
+                    d.setPassword(newPassword);
+                    runOnUiThread(() -> {
+                        Toast.makeText(getApplicationContext(), "Пароль изменён", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                         finish();
-                    } else {
-                        Toast.makeText(this, "Ошибка: " + result.getError().getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
+                    });
+                }
             });
         });
     }

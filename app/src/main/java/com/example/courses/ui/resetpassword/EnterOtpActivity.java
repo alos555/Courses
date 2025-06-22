@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.courses.R;
 import com.example.courses.data.source.SupabaseClient;
 
+import java.io.IOException;
+
 public class EnterOtpActivity extends AppCompatActivity {
 
     private StringBuilder enteredCode = new StringBuilder();
@@ -91,20 +93,26 @@ public class EnterOtpActivity extends AppCompatActivity {
     }
 
     private void verifyOtp(String email, String code) {
-        supabaseClient.verifyOtp(email, code, result -> {
-            runOnUiThread(() -> {
-                if (result.isSuccess()) {
-                    Toast.makeText(this, "Код верен", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(this, SetNewPasswordActivity.class);
-                    intent.putExtra("email", email);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(this, "Неверный код", Toast.LENGTH_SHORT).show();
+        supabaseClient.verifyPasswordResetOtp(getApplicationContext(), email, code, new SupabaseClient.supa_callback() {
+            @Override
+            public void onFailure(IOException e) {
+                runOnUiThread(()->{
+                    Toast.makeText(getApplicationContext(), "Неверный код", Toast.LENGTH_SHORT).show();
                     enteredCode.setLength(0);
                     updateOtpDots();
-                }
-            });
+                });
+            }
+
+            @Override
+            public void onResponse(String responseBody) {
+                runOnUiThread(() -> {
+                        Toast.makeText(getApplicationContext(), "Код верен", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), SetNewPasswordActivity.class);
+                        intent.putExtra("email", email);
+                        startActivity(intent);
+                        finish();
+                });
+            }
         });
     }
 }

@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.courses.R;
 import com.example.courses.data.source.SupabaseClient;
 
+import java.io.IOException;
+
 public class ResetPasswordActivity extends AppCompatActivity {
 
     private EditText etEmail;
@@ -38,19 +40,26 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 return;
             }
 
-            supabaseClient.sendOtp(email, result -> {
-                runOnUiThread(() -> {
-                    if (result.isSuccess()) {
-                        Toast.makeText(this, "Код отправлен", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(ResetPasswordActivity.this, EnterOtpActivity.class);
-                        intent.putExtra("email", email);
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        Toast.makeText(this, "Ошибка: " + result.getError().getMessage(), Toast.LENGTH_LONG).show();
+            supabaseClient.sendPasswordResetOtp(email, new SupabaseClient.supa_callback() {
+                        @Override
+                        public void onFailure(IOException e) {
+                            runOnUiThread(()->{
+                                Toast.makeText(getApplicationContext(), "Ошибка", Toast.LENGTH_LONG).show();
+                            });
+                        }
+
+                        @Override
+                        public void onResponse(String responseBody) {
+                            runOnUiThread(()->{
+                                Toast.makeText(getApplicationContext(), "Код отправлен", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), EnterOtpActivity.class);
+                                intent.putExtra("email", email);
+                                startActivity(intent);
+                                finish();
+                            });
+                        }
                     }
-                });
-            });
+            );
         });
     }
 }

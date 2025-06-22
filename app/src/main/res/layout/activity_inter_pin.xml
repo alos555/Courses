@@ -110,5 +110,14 @@
         android:layout_marginTop="40dp"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"/>
+
+    <Button
+        android:id="@+id/btnForgotPin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Забыли пинкод?"
+        android:layout_marginTop="40dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"/>
 </LinearLayout>
 

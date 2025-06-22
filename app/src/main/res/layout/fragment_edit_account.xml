@@ -32,16 +32,6 @@
         android:padding="10dp"
         android:layout_marginBottom="10dp"/>
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="Пароль"
-        android:inputType="textPassword"
-        android:background="#FFFFFF"
-        android:padding="10dp"
-        android:layout_marginBottom="20dp"/>
-
     <Button
         android:id="@+id/btnSaveChanges"
         android:layout_width="wrap_content"

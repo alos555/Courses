@@ -37,7 +37,7 @@ public class SetPinActivity extends AppCompatActivity {
 
     private void initViews() {
         etPin = findViewById(R.id.etSetPin);
-        etPin.setFocusable(false); // Запрет системной клавиатуры
+        etPin.setFocusable(false);
 
         pin1 = findViewById(R.id.set_pin1);
         pin2 = findViewById(R.id.set_pin2);

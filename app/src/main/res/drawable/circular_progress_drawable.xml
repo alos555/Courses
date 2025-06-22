@@ -8,8 +8,7 @@
         android:thicknessRatio="0.09"
         android:useLevel="true">
         <gradient
-            android:type="sweep"
-            android:useLevelForItem="false"/>
+            android:type="sweep"/>
         <stroke
             android:width="10dp"
             android:color="#FF3F51B5"/>

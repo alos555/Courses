@@ -12,6 +12,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.courses.R;
+import com.example.courses.data.model.DataBinding;
+import com.example.courses.data.source.SupabaseClient;
+import com.example.courses.ui.login.LoginActivity;
 import com.example.courses.ui.main.MainActivity;
 
 
@@ -26,6 +29,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.courses.R;
 import com.example.courses.ui.main.MainActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 public class EnterPinActivity extends AppCompatActivity {
 
@@ -50,7 +58,6 @@ public class EnterPinActivity extends AppCompatActivity {
         pin2 = findViewById(R.id.pin2);
         pin3 = findViewById(R.id.pin3);
         pin4 = findViewById(R.id.pin4);
-        findViewById(R.id.btnEnterPin);
     }
 
     private void setupDigitButtons() {
@@ -93,6 +100,14 @@ public class EnterPinActivity extends AppCompatActivity {
             }
             checkPin();
         });
+
+        findViewById(R.id.btnForgotPin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
+            }
+        });
     }
 
     private void updatePinDots() {
@@ -107,8 +122,7 @@ public class EnterPinActivity extends AppCompatActivity {
         String savedPin = pinPreferences.getPin();
 
         if (savedPin != null && savedPin.equals(inputPin)) {
-            startActivity(new Intent(EnterPinActivity.this, MainActivity.class));
-            finish();
+            login();
         } else {
             Toast.makeText(this, "Неверный пин", Toast.LENGTH_SHORT).show();
             pinBuilder.setLength(0);
@@ -121,5 +135,33 @@ public class EnterPinActivity extends AppCompatActivity {
         pin2.setImageResource(R.drawable.circle_pin);
         pin3.setImageResource(R.drawable.circle_pin);
         pin4.setImageResource(R.drawable.circle_pin);
+    }
+
+    public void login(){
+        DataBinding d = new DataBinding(getApplicationContext());
+        SupabaseClient s = new SupabaseClient();
+        s.login(d.getEmail(), d.getPassword(), new SupabaseClient.supa_callback() {
+            @Override
+            public void onFailure(IOException e) {
+                login();
+            }
+
+            @Override
+            public void onResponse(String responseBody) {
+
+                try {
+                    JSONObject object = new JSONObject(responseBody);
+                    DataBinding dataBinding = new DataBinding(getApplicationContext());
+                    dataBinding.setBearer(object.getString("access_token"));
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+
+                runOnUiThread(()->{
+                    startActivity(new Intent(EnterPinActivity.this, MainActivity.class));
+                    finish();
+                });
+            }
+        });
     }
 }
